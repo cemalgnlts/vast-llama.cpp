@@ -4,7 +4,7 @@ ENV LD_LIBRARY_PATH="/app:$LD_LIBRARY_PATH"
 
 WORKDIR /workspace
 
-COPY entrypoint.sh .
+COPY --chmod=755 entrypoint.sh .
 
 ENTRYPOINT ["/workspace/entrypoint.sh"]
 CMD []
