@@ -2,13 +2,6 @@
 
 cd /workspace
 
-if [ ! -f "./start_server.sh" ] || [ -f "/.force_update" ]; then
-  wget -O "start_server.sh" \
-    "https://raw.githubusercontent.com/cemalgnlts/vast-cli/refs/heads/master/scripts/start_server.sh"
-fi
-
-bash ./start_server.sh &
-
 /app/llama-server \
   --top-k "${LLAMA_ARG_TOP_K:-40}" \
   --top-p "${LLAMA_ARG_TOP_P:-0.95}" \
