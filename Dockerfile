@@ -7,13 +7,14 @@ ARG MODEL_PATH="/workspace/model/ornith-1.0-35b-NVFP4-MTP.gguf"
 WORKDIR /workspace
 
 COPY --chmod=755 entrypoint.sh .
-RUN mkdir -p /workspace/model && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends aria2 ca-certificates && \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends python3 python3-pip ca-certificates && \
     rm -rf /var/lib/apt/lists/* && \
-    aria2c -x16 -s16 -c --max-tries=5 --retry-wait=5 \
-    -d /workspace/model -o ornith-1.0-35b-NVFP4-MTP.gguf \
-    "https://huggingface.co/s-batman/Ornith-1.0-35B-NVFP4-MTP-GGUF/resolve/main/ornith-1.0-35b-NVFP4-MTP.gguf"
+    pip3 install --no-cache-dir --break-system-packages "huggingface_hub[hf_xet]" && \
+    mkdir -p /workspace/model && \
+    hf download s-batman/Ornith-1.0-35B-NVFP4-MTP-GGUF \
+        ornith-1.0-35b-NVFP4-MTP.gguf \
+        --local-dir /workspace/model
 
 #RUN /app/llama download --hf-repo s-batman/Ornith-1.0-35B-NVFP4-MTP-GGUF:NVFP4
 
