@@ -27,7 +27,7 @@ jobs:
         uses: jlumbroso/free-disk-space@main
         with:
           docker-images: false
-          large-packages: true
+          large-packages: false
           swap-storage: true
           tool-cache: true
           android: true
