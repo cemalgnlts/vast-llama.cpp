@@ -15,4 +15,5 @@ cd /workspace
   --no-warmup \
   --no-mmproj \
   --no-slots \
+  --offline \
   --no-ui |& tee "$MODEL_LOG"
