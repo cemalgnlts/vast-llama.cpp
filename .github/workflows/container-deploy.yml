@@ -57,7 +57,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          push: true
+          outputs: type=image,push=true,compression=zstd,compression-level=1,force-compression=true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           secrets: |
